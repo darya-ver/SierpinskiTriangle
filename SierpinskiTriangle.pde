@@ -1,6 +1,9 @@
 int startX = 0;
 int startY = 400;
 
+int cirStartX = 250;
+int cirStartY = 250;
+
 int mouseLength;
 int triangleSize = width;
 
@@ -20,6 +23,8 @@ public void draw()
 	//mouseLength = startY - mouseY;
 	//System.out.println(numberOfTriangles);
 	sierpinski(startX,height, triangleSize);
+	fill(255,0,0);
+
 	if(triangleSize < 2*width-20)
 	{
 		triangleSize += 10;
@@ -30,6 +35,20 @@ public void draw()
 		//startX = 0;
 		triangleSize = width;
 	}
+	
+
+	/*
+	if(cirStartX < width && cirStartY > 0)
+	{
+		cirStartX += 10;
+		cirStartY -=10;
+	}
+	if(cirStartX == width){cirStartX = 250;}
+	if(cirStartY == 0){cirStartY = 250;}
+	
+	ellipse(cirStartX, cirStartY, 20, 20);
+	*/
+
 }
 public void mouseDragged()//optional
 {
@@ -56,11 +75,8 @@ public void sierpinski(int x, int y, int len)
 	}
 	else
 	{
-		fill(0,0,myColor);
 		sierpinski(x, y, len/2);
-		fill(0,myColor,0);
 		sierpinski(x+len/2, y, len/2);
-		fill(myColor,0,0);
 		sierpinski(x+len/4, y-len/2, len/2);
 	}
 }
